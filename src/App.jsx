@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import Registro from './pages/Registro';
+import Registro from './pages/Register';
 import Categories from './pages/Categories';
 import Alerts from './pages/Alerts';
 function App() {
@@ -11,7 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           {/* Cambiamos el <div> por el componente real */}
-          <Route path="/registro" element={<Registro />} /> 
+          <Route path="/registro" element={<Register />} /> 
           
           <Route path="/categories" element={<Categories />} />
           <Route path="/alerts" element={<Alerts />} />

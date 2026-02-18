@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Registro = () => {
+const Register = () => {
   const navigate = useNavigate();
   
   const categorias = [
@@ -41,4 +41,4 @@ const Registro = () => {
   );
 };
 
-export default Registro;
+export default Register;
