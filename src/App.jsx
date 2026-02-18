@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Registro from './pages/Registro';
 import Categories from './pages/Categories';
+import Alerts from './pages/Alerts';
 function App() {
   return (
     <Router>
@@ -13,7 +14,7 @@ function App() {
           <Route path="/registro" element={<Registro />} /> 
           
           <Route path="/categories" element={<Categories />} />
-          <Route path="/alertas" element={<div className="p-8"><h2>Pantalla de Alertas</h2></div>} />
+          <Route path="/alerts" element={<Alerts />} />
         </Routes>
       </div>
     </Router>
