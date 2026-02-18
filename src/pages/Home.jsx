@@ -8,21 +8,21 @@ const Home = () => {
     { 
       title: 'Registrar Residuos', 
       desc: 'Añade nuevos registros diarios', 
-      path: '/registro', 
+      path: '/register', // Antes: /registro
       color: 'bg-[#1eb2a6]', 
       icon: '♻️' 
     },
     { 
       title: 'Listado de Residuos', 
       desc: 'Consulta tus registros entregados', 
-      path: '/consulta', 
+      path: '/categories', // Antes: /consulta
       color: 'bg-[#43d39e]', 
       icon: '📋' 
     },
     { 
       title: 'Alertas', 
       desc: 'Notificaciones importantes', 
-      path: '/alertas', 
+      path: '/alerts', // Antes: /alertas
       color: 'bg-[#fbbd23]', 
       icon: '🔔' 
     },
