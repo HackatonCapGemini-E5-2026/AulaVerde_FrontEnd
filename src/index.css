@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+  /* Aquí puedes añadir variables de color si quieres, 
+     pero para el body lo haremos abajo */
+}
+
+@layer base {
+  body {
+    @apply bg-slate-50 antialiased;
+  }
+}
