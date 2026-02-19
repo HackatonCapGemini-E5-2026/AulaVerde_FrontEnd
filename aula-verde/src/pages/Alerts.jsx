@@ -11,17 +11,15 @@ const Alerts = () => {
   const [alerts, setAlerts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Función para obtener alertas
   const fetchAlerts = async () => {
     try {
       setLoading(true);
-      // Marie-Charlotte mencionó que aún están trabajando en ciertos GETs, 
-      // pero dejamos la estructura lista.
+      
       const response = await api.get('/alerts');
       setAlerts(response.data);
     } catch (error) {
       console.error("Error fetching alerts:", error);
-      // Datos de prueba (Mock) para que la interfaz no esté vacía mientras terminan la DB
+     
       setAlerts([
         { id: 1, name: 'Papel', progress: 98, time: 'Ahora' },
         { id: 2, name: 'Plásticos', progress: 85, time: '12:45' }
@@ -35,16 +33,15 @@ const Alerts = () => {
     fetchAlerts();
   }, []);
 
-  // Nueva función para vaciar contenedores (PATCH)
   const handleEmptyContainer = async (containerId) => {
     try {
-      // Método PATCH confirmado por el equipo de Backend
+      
       await api.patch(`/container/${containerId}`, {
         capacidad: 0
       });
       
       alert('¡Contenedor vaciado con éxito!');
-      // Recargamos la lista para actualizar la interfaz
+      
       fetchAlerts();
     } catch (error) {
       console.error('Error al vaciar el contenedor:', error);
@@ -105,7 +102,7 @@ const Alerts = () => {
                   El contenedor de <strong>{alert.name}</strong> está al {alert.progress}%. {isCritical ? 'Requiere atención inmediata.' : 'Se recomienda revisar pronto.'}
                 </p>
                 
-                {/* Botón de vaciado disponible para todas las alertas con color dinámico */}
+                {/}
                 <button 
                   onClick={() => handleEmptyContainer(alert.id)}
                   className={`mt-3 text-white text-[10px] px-3 py-1 rounded-lg font-bold transition-all hover:opacity-90 ${

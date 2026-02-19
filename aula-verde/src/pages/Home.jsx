@@ -9,17 +9,14 @@ import api from '../api/axios';
 const Home = () => {
   const navigate = useNavigate();
 
-  // --- Lógica de Conexión con el Backend ---
   const [stats, setStats] = useState({ totalWeight: 0, activeAlerts: 0 });
 
   useEffect(() => {
     const fetchHomeData = async () => {
       try {
-        // En cuanto se ejecute esta línea, el import de 'api' se iluminará
         const response = await api.get('/stats'); 
         setStats(response.data);
       } catch (error) {
-        // Si el backend aún no tiene el GET, usamos datos de prueba para no ver errores
         console.log("Esperando respuesta del servidor local...");
         setStats({ totalWeight: 0, activeAlerts: 0 });
       }
@@ -40,7 +37,7 @@ const Home = () => {
         </p>
       </div>
 
-      {/* Aquí podrías mostrar stats.activeAlerts en el futuro si quisieras un contador */}
+      {}
       <div className="space-y-4">
         <RegisterWasteButton onClick={() => navigate('/register')} />
         <ResidueListButton onClick={() => navigate('/categories')} />

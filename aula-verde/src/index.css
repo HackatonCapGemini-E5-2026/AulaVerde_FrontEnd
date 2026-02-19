@@ -1,8 +1,6 @@
 @import "tailwindcss";
 
 @theme {
-  /* Aquí puedes añadir variables de color si quieres, 
-     pero para el body lo haremos abajo */
 }
 
 @layer base {
