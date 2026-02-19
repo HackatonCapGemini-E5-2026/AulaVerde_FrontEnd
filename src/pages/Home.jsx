@@ -19,15 +19,14 @@ const Home = () => {
 
       <div className="mt-2 mb-12">
         <img src={logo} alt="Logo AulaVerde Recicla" className="w-24 h-24 object-contain mb-4" />
-        <h1 className={`text-3xl font-bold leading-tight ${dark ? 'text-white' : 'text-gray-800'}`}>
+        <h1 className={`text-3xl font-bold leading-tight transition-colors duration-300 ${dark ? 'text-white' : 'text-gray-800'}`}>
           Bienvenido a <br />
           <span className="text-[#1eb2a6]">AulaVerde!</span>
         </h1>
-        <p className={`mt-4 text-sm max-w-[200px] ${dark ? 'text-slate-400' : 'text-gray-400'}`}>
+        <p className={`mt-4 text-sm max-w-[200px] transition-colors duration-300 ${dark ? 'text-slate-400' : 'text-gray-400'}`}>
           Gestiona los residuos de tu colegio de forma sostenible.
         </p>
       </div>
-
       <div className="space-y-4">
         <RegisterWasteButton onClick={() => navigate('/register')} />
         <ResidueListButton onClick={() => navigate('/categories')} />

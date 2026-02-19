@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "hash": "3b025e0e",
   "configHash": "c8d4102c",
   "lockfileHash": "c5e56f17",
@@ -31,4 +32,12 @@
       "file": "chunk-G4V7ITBN.js"
     }
   }
+=======
+  "hash": "b0e268ec",
+  "configHash": "7b831a80",
+  "lockfileHash": "329cef49",
+  "browserHash": "594ce314",
+  "optimized": {},
+  "chunks": {}
+>>>>>>> 95816e3d93f22aa603d61e3be4e1033cfcc58414
 }

@@ -18,7 +18,6 @@ const Categories = () => {
 
   return (
     <div className={`p-6 min-h-screen transition-colors duration-300 ${dark ? 'bg-slate-900' : 'bg-white'}`}>
-    
       <header className="mb-6">
         <div className="flex justify-between items-center mb-4">
           <button onClick={() => navigate('/')} className={`text-xl ${dark ? 'text-slate-300' : 'text-gray-600'}`}>‹</button>
@@ -29,7 +28,6 @@ const Categories = () => {
         <p className={`text-xs ${dark ? 'text-slate-400' : 'text-gray-400'}`}>Monitoreo de residuos en tiempo real</p>
       </header>
 
-      
       <div className="relative mb-8">
         <input
           type="text"
@@ -37,10 +35,9 @@ const Categories = () => {
           className={`w-full border-none rounded-xl py-3 pl-10 pr-4 text-sm focus:ring-2 focus:ring-[#1eb2a6] outline-none transition-colors duration-300
             ${dark ? 'bg-slate-800 text-white placeholder-slate-500' : 'bg-gray-100 text-gray-800'}`}
         />
-        <span className="absolute left-3 top-3 text-gray-400 italic">🔍</span>
+        <span className="absolute left-3 top-3 text-gray-400">🔍</span>
       </div>
 
-    
       <div className="space-y-6">
         {categoriesData.map((cat, idx) => (
           <div key={idx} className="flex items-center space-x-4">
@@ -62,7 +59,6 @@ const Categories = () => {
         ))}
       </div>
 
-      
       <div className="mt-10">
         <div className="flex justify-between items-center mb-4">
           <h3 className={`font-bold text-sm ${dark ? 'text-slate-200' : 'text-gray-800'}`}>Alertas Recientes</h3>
