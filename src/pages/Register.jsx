@@ -1,7 +1,49 @@
-import React from 'react';
+﻿import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../ThemeContext';
 import DarkToggle from '../components/DarkToggle';
+
+const DocumentIcon = ({ className }) => (
+  <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+    <path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M14 3v5h5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M9 13h6M9 17h6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+  </svg>
+);
+
+const BagIcon = ({ className }) => (
+  <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+    <path d="M6 9h12l-1 11a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L6 9Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M9 9V7a3 3 0 1 1 6 0v2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+  </svg>
+);
+
+const GlassIcon = ({ className }) => (
+  <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+    <path d="M7 4h10v2a5 5 0 0 1-5 5 5 5 0 0 1-5-5V4Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M12 11v6m-3 3h6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+  </svg>
+);
+
+const LeafIcon = ({ className }) => (
+  <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+    <path d="M19.5 4.5c-5.5 0-11.5 2-14 8.5 0 0 3 5.5 9 5.5 4.5 0 7.5-4 7.5-9 0-1.8-.6-3.5-2.5-5Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M8 14c2-2 4.5-3.5 7.5-4.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+  </svg>
+);
+
+const WarningIcon = ({ className }) => (
+  <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+    <path d="M12 3 2.5 19a2 2 0 0 0 1.7 3h15.6a2 2 0 0 0 1.7-3L12 3Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M12 9v5m0 3h.01" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+  </svg>
+);
+
+const TrashIcon = ({ className }) => (
+  <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+    <path d="M5 7h14M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2m-8 0 1 12a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2l1-12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
 
 const Register = () => {
   const navigate = useNavigate();
@@ -14,7 +56,41 @@ const Register = () => {
     { name: 'Orgánico', icon: '🍎', color: 'text-orange-500', border: dark ? 'border-orange-800' : 'border-orange-200' },
     { name: 'Peligrosos', icon: '⚠️', color: 'text-red-500', border: dark ? 'border-red-800' : 'border-red-200' },
     { name: 'General', icon: '🗑️', color: 'text-gray-500', border: dark ? 'border-gray-600' : 'border-gray-200' },
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [showForm, setShowForm] = useState(false);
+  const [formData, setFormData] = useState({
+    tipoResiduo: '',
+    peso: '',
+  });
+
+  const categorias = [
+    { name: 'Papel', Icon: DocumentIcon, color: 'text-blue-500', border: 'border-blue-200' },
+    { name: 'Plástico/Metal', Icon: BagIcon, color: 'text-yellow-500', border: 'border-yellow-200' },
+    { name: 'Vidrio', Icon: GlassIcon, color: 'text-green-500', border: 'border-green-200' },
+    { name: 'Orgánico', Icon: LeafIcon, color: 'text-orange-500', border: 'border-orange-200' },
+    { name: 'Peligrosos', Icon: WarningIcon, color: 'text-red-500', border: 'border-red-200' },
+    { name: 'General', Icon: TrashIcon, color: 'text-slate-400', border: 'border-slate-200' },
   ];
+
+  const handleCategorySelect = (categoryName) => {
+    setSelectedCategory(categoryName);
+    setFormData((prev) => ({ ...prev, tipoResiduo: categoryName }));
+  };
+
+  const handleShowForm = () => {
+    setShowForm(true);
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('Residuo registrado:', formData);
+    setFormData({ tipoResiduo: selectedCategory || '', peso: '' });
+  };
 
   return (
     <div className={`p-6 min-h-screen transition-colors duration-300 ${dark ? 'bg-slate-900' : 'bg-white'}`}>
@@ -24,6 +100,10 @@ const Register = () => {
           <h2 className={`text-xl font-bold ${dark ? 'text-white' : 'text-slate-800'}`}>Registrar Residuo</h2>
         </div>
         <DarkToggle />
+    <div className="p-6 bg-white min-h-screen">
+      <div className="flex items-center mb-6">
+        <button onClick={() => navigate('/')} className="text-2xl mr-4">&#8249;</button>
+        <h2 className="text-xl font-bold">Registrar Residuo</h2>
       </div>
 
       <p className={`text-sm mb-6 text-center ${dark ? 'text-slate-400' : 'text-gray-500'}`}>
@@ -42,11 +122,87 @@ const Register = () => {
             <span className={`text-xs font-semibold ${cat.color}`}>{cat.name}</span>
           </div>
         ))}
+      <div className="grid grid-cols-2 gap-4 mb-8">
+        {categorias.map((cat) => {
+          const Icon = cat.Icon;
+
+          return (
+            <button
+              key={cat.name}
+              type="button"
+              onClick={() => handleCategorySelect(cat.name)}
+              className={`border ${cat.border} rounded-xl p-5 min-h-28 bg-white flex flex-col items-center justify-center shadow-sm hover:bg-gray-50 transition-colors ${
+                selectedCategory === cat.name ? 'ring-2 ring-[#1eb2a6]' : ''
+              }`}
+            >
+              <Icon className={`w-8 h-8 mb-3 ${cat.color}`} />
+              <span className="text-base font-semibold text-slate-800 leading-none text-center">
+                {cat.name}
+              </span>
+            </button>
+          );
+        })}
       </div>
 
-      <button className="w-full bg-[#1eb2a6] text-white py-4 rounded-2xl font-bold shadow-lg mt-4">
+      <button
+        type="button"
+        onClick={handleShowForm}
+        className="w-full bg-[#1eb2a6] text-white py-4 rounded-2xl font-bold shadow-lg mt-4"
+      >
         Registrar Residuo
       </button>
+
+      {showForm && (
+        <form onSubmit={handleSubmit} className="mt-6 border border-gray-200 rounded-2xl p-4 shadow-sm space-y-4">
+          <h3 className="text-lg font-semibold">Formulario de registro</h3>
+
+          <div>
+            <label htmlFor="tipoResiduo" className="block text-sm font-medium text-gray-700 mb-1">
+              Tipo de residuo
+            </label>
+            <select
+              id="tipoResiduo"
+              name="tipoResiduo"
+              value={formData.tipoResiduo}
+              onChange={handleInputChange}
+              required
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#1eb2a6]"
+            >
+              <option value="">Selecciona una opcion</option>
+              {categorias.map((cat) => (
+                <option key={cat.name} value={cat.name}>
+                  {cat.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label htmlFor="peso" className="block text-sm font-medium text-gray-700 mb-1">
+              Peso (kg)
+            </label>
+            <input
+              id="peso"
+              name="peso"
+              type="number"
+              min="0"
+              step="0.01"
+              value={formData.peso}
+              onChange={handleInputChange}
+              placeholder="Ej: 2.50"
+              required
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#1eb2a6]"
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-[#0f8f84] text-white py-3 rounded-xl font-semibold hover:opacity-95 transition-opacity"
+          >
+            Guardar registro
+          </button>
+        </form>
+      )}
     </div>
   );
 };
