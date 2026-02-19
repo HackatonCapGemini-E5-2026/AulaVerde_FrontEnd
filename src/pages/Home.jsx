@@ -1,35 +1,12 @@
-import React from 'react';
+﻿import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../ThemeContext';
 import DarkToggle from '../components/DarkToggle';
+import RegisterWasteButton from '../components/home/RegisterWasteButton';
 
 const Home = () => {
   const navigate = useNavigate();
   const { dark } = useTheme();
-
-  const menuOptions = [
-    {
-      title: 'Registrar Residuos',
-      desc: 'Añade nuevos registros diarios',
-      path: '/register',
-      color: 'bg-[#1eb2a6]',
-      icon: '♻️'
-    },
-    {
-      title: 'Listado de Residuos',
-      desc: 'Consulta tus registros entregados',
-      path: '/categories',
-      color: 'bg-[#43d39e]',
-      icon: '📋'
-    },
-    {
-      title: 'Alertas',
-      desc: 'Notificaciones importantes',
-      path: '/alerts',
-      color: 'bg-[#fbbd23]',
-      icon: '🔔'
-    },
-  ];
 
   return (
     <div className={`flex flex-col min-h-screen p-6 transition-colors duration-300 ${dark ? 'bg-slate-900' : 'bg-white'}`}>
@@ -54,22 +31,31 @@ const Home = () => {
 
       {/* Buttons */}
       <div className="space-y-4">
-        {menuOptions.map((option, idx) => (
-          <button
-            key={idx}
-            onClick={() => navigate(option.path)}
-            className={`${option.color} w-full flex items-center p-5 rounded-[2rem] text-white shadow-lg transition-transform active:scale-95`}
-          >
-            <div className="bg-white/20 p-3 rounded-2xl mr-4 text-xl">
-              {option.icon}
-            </div>
-            <div className="flex-1 text-left">
-              <h3 className="font-bold text-lg leading-tight">{option.title}</h3>
-              <p className="text-xs opacity-80">{option.desc}</p>
-            </div>
-            <div className="text-xl font-light ml-2">›</div>
-          </button>
-        ))}
+        <RegisterWasteButton onClick={() => navigate('/register')} />
+
+        <button
+          onClick={() => navigate('/categories')}
+          className="bg-[#43d39e] w-full flex items-center p-5 rounded-[2rem] text-white shadow-lg transition-transform active:scale-95"
+        >
+          <div className="bg-white/20 p-3 rounded-2xl mr-4 text-xl">📋</div>
+          <div className="flex-1 text-left">
+            <h3 className="font-bold text-lg leading-tight">Listado de Residuos</h3>
+            <p className="text-xs opacity-80">Consulta tus registros entregados</p>
+          </div>
+          <div className="text-xl font-light ml-2">›</div>
+        </button>
+
+        <button
+          onClick={() => navigate('/alerts')}
+          className="bg-[#fbbd23] w-full flex items-center p-5 rounded-[2rem] text-white shadow-lg transition-transform active:scale-95"
+        >
+          <div className="bg-white/20 p-3 rounded-2xl mr-4 text-xl">🔔</div>
+          <div className="flex-1 text-left">
+            <h3 className="font-bold text-lg leading-tight">Alertas</h3>
+            <p className="text-xs opacity-80">Notificaciones importantes</p>
+          </div>
+          <div className="text-xl font-light ml-2">›</div>
+        </button>
       </div>
     </div>
   );
