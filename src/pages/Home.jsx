@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import RegisterWasteButton from '../components/home/RegisterWasteButton';
 import ResidueListButton from '../components/home/ResidueListButton';
 import AlertsButton from '../components/home/AlertsButton';
+import logo from '../logo/logo.png';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const Home = () => {
     <div className="flex flex-col min-h-screen bg-white p-6">
       {/* Header con el Logo */}
       <div className="mt-2 mb-12">
-        <img src="src/logo/logo.png" alt="Logo AulaVerde Recicla" className="w-20 h-20 object-contain mb-4" />
+        <img src={logo} alt="Logo AulaVerde Recicla" className="w-20 h-20 object-contain mb-4" />
         <h1 className="text-3xl font-bold text-gray-800 leading-tight">
           Bienvenido a <br />
           <span className="text-[#1eb2a6]">AulaVerde!</span>
