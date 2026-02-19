@@ -7,6 +7,13 @@
 
 @layer base {
   body {
-    @apply bg-slate-50 antialiased;
+    @apply antialiased;
+    background-color: #f8fafc;
+    color: #0f172a;
+  }
+
+  body.theme-dark {
+    background-color: #0f172a;
+    color: #f8fafc;
   }
 }
