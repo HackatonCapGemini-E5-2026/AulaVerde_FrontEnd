@@ -48,10 +48,12 @@ const TrashIcon = ({ className }) => (
 const Register = () => {
   const navigate = useNavigate();
   const { dark } = useTheme();
+  const today = new Date().toISOString().split('T')[0];
 
   const [selectedCategory, setSelectedCategory] = useState('');
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({
+    fechaRegistro: today,
     tipoResiduo: '',
     peso: '',
   });
@@ -78,7 +80,7 @@ const Register = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('Residuo registrado:', formData);
-    setFormData({ tipoResiduo: selectedCategory || '', peso: '' });
+    setFormData({ fechaRegistro: today, tipoResiduo: selectedCategory || '', peso: '' });
   };
 
   return (
@@ -132,6 +134,23 @@ const Register = () => {
           className={`mt-6 border rounded-2xl p-4 shadow-sm space-y-4 ${dark ? 'border-slate-700 bg-slate-800' : 'border-gray-200 bg-white'}`}
         >
           <h3 className={`text-lg font-semibold ${dark ? 'text-white' : 'text-slate-800'}`}>Formulario de registro</h3>
+
+          <div>
+            <label htmlFor="fechaRegistro" className={`block text-xs font-bold tracking-wide mb-2 uppercase ${dark ? 'text-slate-400' : 'text-slate-400'}`}>
+              Fecha de registro
+            </label>
+            <input
+              id="fechaRegistro"
+              name="fechaRegistro"
+              type="date"
+              value={formData.fechaRegistro}
+              onChange={handleInputChange}
+              required
+              className={`w-full border rounded-2xl px-3 py-3 focus:outline-none focus:ring-2 focus:ring-[#1eb2a6] ${
+                dark ? 'border-slate-600 bg-slate-900 text-white' : 'border-gray-300 bg-white text-slate-800'
+              }`}
+            />
+          </div>
 
           <div>
             <label htmlFor="tipoResiduo" className={`block text-sm font-medium mb-1 ${dark ? 'text-slate-200' : 'text-gray-700'}`}>
