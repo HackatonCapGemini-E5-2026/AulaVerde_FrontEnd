@@ -9,7 +9,6 @@ const Home = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-white p-6">
-      {/* Header con el Logo */}
       <div className="mt-10 mb-12">
         <div className="w-12 h-12 bg-[#1eb2a6] rounded-xl mb-6 flex items-center justify-center text-white font-bold text-2xl italic shadow-lg">
           A
@@ -23,14 +22,12 @@ const Home = () => {
         </p>
       </div>
 
-      {/* Botones / Contenedores */}
       <div className="space-y-4">
         <RegisterWasteButton onClick={() => navigate('/register')} />
         <ResidueListButton onClick={() => navigate('/categories')} />
         <AlertsButton onClick={() => navigate('/alerts')} />
       </div>
 
-      {/* Espacio extra para que la futura Navbar no tape el contenido */}
       <div className="h-20"></div>
     </div>
   );
