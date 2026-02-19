@@ -1,7 +1,8 @@
-import { useTheme } from '../ThemeContext';
+﻿import { useTheme } from '../ThemeContext';
 
 const DarkToggle = () => {
   const { dark, toggle } = useTheme();
+
   return (
     <button
       onClick={toggle}
@@ -14,10 +15,10 @@ const DarkToggle = () => {
       <span
         className={`
           absolute top-0.5 left-0.5 w-5 h-5 rounded-full shadow-md flex items-center justify-center text-[10px] transition-transform duration-300
-          ${dark ? 'translate-x-6 bg-slate-900' : 'translate-x-0 bg-white'}
+          ${dark ? 'translate-x-6 bg-slate-900 text-white' : 'translate-x-0 bg-white text-amber-500'}
         `}
       >
-        {dark ? '🌙' : '☀️'}
+        {dark ? '\u263D' : '\u2600'}
       </span>
     </button>
   );
