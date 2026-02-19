@@ -10,10 +10,8 @@ const Home = () => {
   return (
     <div className="flex flex-col min-h-screen bg-white p-6">
       {/* Header con el Logo */}
-      <div className="mt-10 mb-12">
-        <div className="w-12 h-12 bg-[#1eb2a6] rounded-xl mb-6 flex items-center justify-center text-white font-bold text-2xl italic">
-          A
-        </div>
+      <div className="mt-2 mb-12">
+        <img src="src/logo/logo.png" alt="Logo AulaVerde Recicla" className="w-20 h-20 object-contain mb-4" />
         <h1 className="text-3xl font-bold text-gray-800 leading-tight">
           Bienvenido a <br />
           <span className="text-[#1eb2a6]">AulaVerde!</span>
