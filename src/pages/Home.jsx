@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <div className="flex flex-col min-h-screen bg-white p-6">
       <div className="mt-2 mb-12">
-        <img src={logo} alt="Logo AulaVerde Recicla" className="w-20 h-20 object-contain mb-4" />
+        <img src={logo} alt="Logo AulaVerde Recicla" className="w-24 h-24 object-contain mb-4" />
         <h1 className="text-3xl font-bold text-gray-800 leading-tight">
           Bienvenido a <br />
           <span className="text-[#1eb2a6]">AulaVerde!</span>
