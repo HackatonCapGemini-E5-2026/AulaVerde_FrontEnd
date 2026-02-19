@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import RegisterWasteButton from '../components/home/RegisterWasteButton';
+import ResidueListButton from '../components/home/ResidueListButton';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -24,18 +25,7 @@ const Home = () => {
       {/* Botones / Contenedores */}
       <div className="space-y-4">
         <RegisterWasteButton onClick={() => navigate('/register')} />
-
-        <button
-          onClick={() => navigate('/categories')}
-          className="bg-[#43d39e] w-full flex items-center p-5 rounded-[2rem] text-white shadow-lg transition-transform active:scale-95"
-        >
-          <div className="bg-white/20 p-3 rounded-2xl mr-4 text-xl">📋</div>
-          <div className="flex-1 text-left">
-            <h3 className="font-bold text-lg leading-tight">Listado de Residuos</h3>
-            <p className="text-xs opacity-80">Consulta tus registros entregados</p>
-          </div>
-          <div className="text-xl font-light ml-2">›</div>
-        </button>
+        <ResidueListButton onClick={() => navigate('/categories')} />
 
         <button
           onClick={() => navigate('/alerts')}
