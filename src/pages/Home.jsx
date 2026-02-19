@@ -10,7 +10,6 @@ const Home = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-white p-6">
-      {/* Header con el Logo */}
       <div className="mt-2 mb-12">
         <img src={logo} alt="Logo AulaVerde Recicla" className="w-20 h-20 object-contain mb-4" />
         <h1 className="text-3xl font-bold text-gray-800 leading-tight">
@@ -21,8 +20,6 @@ const Home = () => {
           Gestiona los residuos de tu colegio de forma sostenible.
         </p>
       </div>
-
-      {/* Botones / Contenedores */}
       <div className="space-y-4">
         <RegisterWasteButton onClick={() => navigate('/register')} />
         <ResidueListButton onClick={() => navigate('/categories')} />

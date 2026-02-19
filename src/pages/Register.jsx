@@ -49,13 +49,6 @@ const Register = () => {
   const navigate = useNavigate();
   const { dark } = useTheme();
 
-  const categorias = [
-    { name: 'Papel', icon: '📄', color: 'text-blue-500', border: dark ? 'border-blue-800' : 'border-blue-200' },
-    { name: 'Plástico/Metal', icon: '🧴', color: 'text-yellow-500', border: dark ? 'border-yellow-800' : 'border-yellow-200' },
-    { name: 'Vidrio', icon: '🍾', color: 'text-green-500', border: dark ? 'border-green-800' : 'border-green-200' },
-    { name: 'Orgánico', icon: '🍎', color: 'text-orange-500', border: dark ? 'border-orange-800' : 'border-orange-200' },
-    { name: 'Peligrosos', icon: '⚠️', color: 'text-red-500', border: dark ? 'border-red-800' : 'border-red-200' },
-    { name: 'General', icon: '🗑️', color: 'text-gray-500', border: dark ? 'border-gray-600' : 'border-gray-200' },
   const [selectedCategory, setSelectedCategory] = useState('');
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({
@@ -64,21 +57,17 @@ const Register = () => {
   });
 
   const categorias = [
-    { name: 'Papel', Icon: DocumentIcon, color: 'text-blue-500', border: 'border-blue-200' },
-    { name: 'Plástico/Metal', Icon: BagIcon, color: 'text-yellow-500', border: 'border-yellow-200' },
-    { name: 'Vidrio', Icon: GlassIcon, color: 'text-green-500', border: 'border-green-200' },
-    { name: 'Orgánico', Icon: LeafIcon, color: 'text-orange-500', border: 'border-orange-200' },
-    { name: 'Peligrosos', Icon: WarningIcon, color: 'text-red-500', border: 'border-red-200' },
-    { name: 'General', Icon: TrashIcon, color: 'text-slate-400', border: 'border-slate-200' },
+    { name: 'Papel', Icon: DocumentIcon, color: 'text-blue-500', border: dark ? 'border-blue-800' : 'border-blue-200' },
+    { name: 'Plástico/Metal', Icon: BagIcon, color: 'text-yellow-500', border: dark ? 'border-yellow-800' : 'border-yellow-200' },
+    { name: 'Vidrio', Icon: GlassIcon, color: 'text-green-500', border: dark ? 'border-green-800' : 'border-green-200' },
+    { name: 'Orgánico', Icon: LeafIcon, color: 'text-orange-500', border: dark ? 'border-orange-800' : 'border-orange-200' },
+    { name: 'Peligrosos', Icon: WarningIcon, color: 'text-red-500', border: dark ? 'border-red-800' : 'border-red-200' },
+    { name: 'General', Icon: TrashIcon, color: 'text-slate-400', border: dark ? 'border-slate-700' : 'border-slate-200' },
   ];
 
   const handleCategorySelect = (categoryName) => {
     setSelectedCategory(categoryName);
     setFormData((prev) => ({ ...prev, tipoResiduo: categoryName }));
-  };
-
-  const handleShowForm = () => {
-    setShowForm(true);
   };
 
   const handleInputChange = (event) => {
@@ -96,47 +85,32 @@ const Register = () => {
     <div className={`p-6 min-h-screen transition-colors duration-300 ${dark ? 'bg-slate-900' : 'bg-white'}`}>
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center">
-          <button onClick={() => navigate('/')} className={`text-2xl mr-4 ${dark ? 'text-slate-300' : 'text-gray-600'}`}>‹</button>
+          <button onClick={() => navigate('/')} className={`text-2xl mr-4 ${dark ? 'text-slate-300' : 'text-gray-600'}`}>
+            &#8249;
+          </button>
           <h2 className={`text-xl font-bold ${dark ? 'text-white' : 'text-slate-800'}`}>Registrar Residuo</h2>
         </div>
         <DarkToggle />
-    <div className="p-6 bg-white min-h-screen">
-      <div className="flex items-center mb-6">
-        <button onClick={() => navigate('/')} className="text-2xl mr-4">&#8249;</button>
-        <h2 className="text-xl font-bold">Registrar Residuo</h2>
       </div>
 
       <p className={`text-sm mb-6 text-center ${dark ? 'text-slate-400' : 'text-gray-500'}`}>
         Selecciona el tipo de residuo recolectado hoy en el aula.
       </p>
 
-      
-      <div className="grid grid-cols-2 gap-4 mb-8">
-        {categorias.map((cat, idx) => (
-          <div
-            key={idx}
-            className={`border ${cat.border} rounded-xl p-4 flex flex-col items-center justify-center shadow-sm cursor-pointer transition-colors
-              ${dark ? 'bg-slate-800 hover:bg-slate-700' : 'hover:bg-gray-50'}`}
-          >
-            <span className="text-3xl mb-2">{cat.icon}</span>
-            <span className={`text-xs font-semibold ${cat.color}`}>{cat.name}</span>
-          </div>
-        ))}
       <div className="grid grid-cols-2 gap-4 mb-8">
         {categorias.map((cat) => {
           const Icon = cat.Icon;
-
           return (
             <button
               key={cat.name}
               type="button"
               onClick={() => handleCategorySelect(cat.name)}
-              className={`border ${cat.border} rounded-xl p-5 min-h-28 bg-white flex flex-col items-center justify-center shadow-sm hover:bg-gray-50 transition-colors ${
-                selectedCategory === cat.name ? 'ring-2 ring-[#1eb2a6]' : ''
-              }`}
+              className={`border ${cat.border} rounded-xl p-5 min-h-28 flex flex-col items-center justify-center shadow-sm transition-colors ${
+                dark ? 'bg-slate-800 hover:bg-slate-700' : 'bg-white hover:bg-gray-50'
+              } ${selectedCategory === cat.name ? 'ring-2 ring-[#1eb2a6]' : ''}`}
             >
               <Icon className={`w-8 h-8 mb-3 ${cat.color}`} />
-              <span className="text-base font-semibold text-slate-800 leading-none text-center">
+              <span className={`text-base font-semibold leading-none text-center ${dark ? 'text-slate-100' : 'text-slate-800'}`}>
                 {cat.name}
               </span>
             </button>
@@ -146,18 +120,21 @@ const Register = () => {
 
       <button
         type="button"
-        onClick={handleShowForm}
+        onClick={() => setShowForm(true)}
         className="w-full bg-[#1eb2a6] text-white py-4 rounded-2xl font-bold shadow-lg mt-4"
       >
         Registrar Residuo
       </button>
 
       {showForm && (
-        <form onSubmit={handleSubmit} className="mt-6 border border-gray-200 rounded-2xl p-4 shadow-sm space-y-4">
-          <h3 className="text-lg font-semibold">Formulario de registro</h3>
+        <form
+          onSubmit={handleSubmit}
+          className={`mt-6 border rounded-2xl p-4 shadow-sm space-y-4 ${dark ? 'border-slate-700 bg-slate-800' : 'border-gray-200 bg-white'}`}
+        >
+          <h3 className={`text-lg font-semibold ${dark ? 'text-white' : 'text-slate-800'}`}>Formulario de registro</h3>
 
           <div>
-            <label htmlFor="tipoResiduo" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="tipoResiduo" className={`block text-sm font-medium mb-1 ${dark ? 'text-slate-200' : 'text-gray-700'}`}>
               Tipo de residuo
             </label>
             <select
@@ -166,9 +143,11 @@ const Register = () => {
               value={formData.tipoResiduo}
               onChange={handleInputChange}
               required
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#1eb2a6]"
+              className={`w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#1eb2a6] ${
+                dark ? 'border-slate-600 bg-slate-900 text-white' : 'border-gray-300 bg-white text-slate-800'
+              }`}
             >
-              <option value="">Selecciona una opcion</option>
+              <option value="">Selecciona una opción</option>
               {categorias.map((cat) => (
                 <option key={cat.name} value={cat.name}>
                   {cat.name}
@@ -178,7 +157,7 @@ const Register = () => {
           </div>
 
           <div>
-            <label htmlFor="peso" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="peso" className={`block text-sm font-medium mb-1 ${dark ? 'text-slate-200' : 'text-gray-700'}`}>
               Peso (kg)
             </label>
             <input
@@ -191,14 +170,13 @@ const Register = () => {
               onChange={handleInputChange}
               placeholder="Ej: 2.50"
               required
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#1eb2a6]"
+              className={`w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#1eb2a6] ${
+                dark ? 'border-slate-600 bg-slate-900 text-white placeholder:text-slate-400' : 'border-gray-300 bg-white text-slate-800'
+              }`}
             />
           </div>
 
-          <button
-            type="submit"
-            className="w-full bg-[#0f8f84] text-white py-3 rounded-xl font-semibold hover:opacity-95 transition-opacity"
-          >
+          <button type="submit" className="w-full bg-[#0f8f84] text-white py-3 rounded-xl font-semibold hover:opacity-95 transition-opacity">
             Guardar registro
           </button>
         </form>
